@@ -39,24 +39,21 @@ Connect to the EC2 Ubuntu instance, update system packages, and install the Ngin
 
 1. Open up **Windows Powershell**
 2. Navigate to the directory where the '.pem' key file is stored:
-'''powershell
+```powershell
 cd C:\Users\<YourUsername>\Desktop
 3. Connect to the EC2 instance using SSH:
-'''bash
+```bash
 ssh -i linux-web-server-project.pem ubuntu@<instance-public-ipv4>
-
-4. Update Ubuntu Packages
-'''bash
+5. Update Ubuntu Packages
+```bash
 sudo apt update && sudo apt upgrade -y
-
 6. Install Nginx Web Server
-'''bash
+7. ```bash
 sudo apt install nginx -y
 sudo systemctl start nginx
 sudo systemctl enable nginx
-
 8. Verify Nginx Service Status
-'''bash
+```bash
 sudo systemctl status nginx
 
 **Notes**
