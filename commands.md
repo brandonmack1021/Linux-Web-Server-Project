@@ -44,15 +44,18 @@ cd C:\Users\<YourUsername>\Desktop
 3. Connect to the EC2 instance using SSH:
 '''bash
 ssh -i linux-web-server-project.pem ubuntu@<instance-public-ipv4>
+
 4. Update Ubuntu Packages
 '''bash
 sudo apt update && sudo apt upgrade -y
-5. Install Nginx Web Server
+
+6. Install Nginx Web Server
 '''bash
 sudo apt install nginx -y
 sudo systemctl start nginx
 sudo systemctl enable nginx
-6. Verify Nginx Service Status
+
+8. Verify Nginx Service Status
 '''bash
 sudo systemctl status nginx
 
