@@ -26,3 +26,40 @@ Document the creation of an AWS EC2 Ubuntu instance to use for the Linux Web Ser
 **Notes** 
 - This instance willl be used to practice Linux commands and deploy a web server.
 - **Do not commit your '.pem' key to GitHub** keep it private.
+
+
+# Linux Web Server Project - Step 1
+
+## Goal
+Connect to the EC2 Ubuntu instance, update system packages, and install the Nginx web server.
+
+---
+
+## Steps to Connect to EC2 instance via SSH (Windows Powershell)
+
+1. Open up **Windows Powershell**
+2. Navigate to the directory where the '.pem' key file is stored:
+'''powershell
+cd C:\Users\<YourUsername>\Desktop
+3. Connect to the EC2 instance using SSH:
+'''bash
+ssh -i linux-web-server-project.pem ubuntu@<instance-public-ipv4>
+4. Update Ubuntu Packages
+'''bash
+sudo apt update && sudo apt upgrade -y
+5. Install Nginx Web Server
+'''bash
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+6. Verify Nginx Service Status
+'''bash
+sudo systemctl status nginx
+
+**Notes**
+- You start in the /home/ubuntu directory after connecting via SSH
+- Directory changes are not required for installing software
+- Never upload your .pem key to GitHub
+
+   
+
