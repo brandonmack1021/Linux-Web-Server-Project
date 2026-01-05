@@ -87,21 +87,25 @@ sudo ufw status
 ```
 * By default, UFW may be inactive on Ubuntu
 * We will explicitly allow web traffic (port 80)
+
 2. **Allow SSH Traffic** (So you dont lock yourself out)
 ```bash
 sudo ufw allow ssh
 ```
+
 3. **Allow HTTP traffic** (port 80)
 ```bash
 sudo ufw allow http
 ```
 * This allows inbound web traffic required for Nginx
+  
 4. **Enable the UFW firewall**
 ```bash
 sudo ufw allow http
 ```
 * Press y when prompted to continue
 * This activates your firewall rules
+  
 5.**Verify firewall rules** 
 ```bash
 sudo ufw status
@@ -109,10 +113,12 @@ sudo ufw status
 * you should see something like
   *80/tcp ALLOW Anywhere
   *22/tcp ALLOW Anywhere
+  
 6.**Verify AWS security group allows HTTP**
 * Go to AWS EC2 -> Security Groups
 * Edit inbound rules
 * Ensure HTTP (port 80) is allowed from 0.0.0.0/0
+  
 7.**Test Nginx in a web browser**
 * Copy your EC2 Public IPv4 address
 * Open a web browser
