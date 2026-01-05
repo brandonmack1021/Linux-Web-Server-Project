@@ -140,6 +140,6 @@ http://<instance-public-ipv4>
 - Port 80 (HTTP) allows web traffic
 - Both AWS security groups and UFW must allow traffic
 - If the page does not load:
-  - Confirm Nginx isn running (sudo systemctl status nginx)
+  - Confirm Nginx isn't running (sudo systemctl status nginx)
   - Verify port 80 is allowed in AWS and UFW
 
