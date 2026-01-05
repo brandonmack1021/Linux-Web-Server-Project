@@ -187,8 +187,8 @@ sudo nano index.html
 * you can change the text if you want
 
 4. Save and exit Nano
-   * Press CTRL + 0 -> Enter --> Saves the file
-   * Press CTRL + X --> exits Nano
+   * Press CTRL + 0 -> Enter -> Saves the file
+   * Press CTRL + X -> exits Nano
 
 5. Verify the Webpage in a browser
 
