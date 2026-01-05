@@ -71,5 +71,68 @@ sudo systemctl status nginx
 - Directory changes are not required for installing software
 - Never upload your .pem key to GitHub
 
-   
+
+# Linux Web Server Project - Step 2
+
+## Goal
+Allow HTTP traffic to the EC2 instance and verify the Nginx web server is accessible form a web browser.
+
+---
+
+## Steps to Configure Firewall and Test Nginx
+
+1. **Check UFW (Uncomplicated Firewall) status**
+```bash
+sudo ufw status
+```
+* By default, UFW may be inactive on Ubuntu
+* We will explicitly allow web traffic (port 80)
+
+2. **Allow SSH Traffic** (So you dont lock yourself out)
+```bash
+sudo ufw allow ssh
+```
+
+3. **Allow HTTP traffic** (port 80)
+```bash
+sudo ufw allow http
+```
+* This allows inbound web traffic required for Nginx
+
+4. **Enable the UFW firewall**
+```bash
+sudo ufw allow http
+```
+* Press y when prompted to continue
+* This activates your firewall rules
+
+5.**Verify firewall rules** 
+```bash
+sudo ufw status
+```
+* you should see something like
+  *80/tcp ALLOW Anywhere
+  *22/tcp ALLOW Anywhere
+
+6.**Verify AWS security group allows HTTP**
+* Go to AWS EC2 -> Security Groups
+* Edit inbound rules
+* Ensure HTTP (port 80) is allowed from 0.0.0.0/0
+
+7.**Test Nginx in a web browser**
+* Copy your EC2 Public IPv4 address
+* Open a web browser
+* Navigate to:
+```
+http://<instance-public-ipv4>
+```
+*you should see the default Nginx welcome page
+
+**Notes**
+- Port 22 (SSH) allows remote access)
+- Port 80 (HTTP) allows web traffic
+- Both AWS security groups and UFW must allow traffic
+- If the page does not load:
+  - Confirm Nginx isn running (sudo systemctl status nginx)
+  - Verify port 80 is allowed in AWS and UFW
 
