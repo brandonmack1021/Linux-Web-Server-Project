@@ -144,3 +144,69 @@ http://<instance-public-ipv4>
   - Confirm Nginx isn't running (sudo systemctl status nginx)
   - Verify port 80 is allowed in AWS and UFW
 
+
+# Linux Web Server Project - Step 3
+
+##Goal
+Deploy a custom webpage on the EC2 Nginx web server and verify it is accessible in a browser.
+
+--- 
+
+## Steps to Deploy a Custom Web page
+
+1. Navigate to the Nginx web directory
+```bash
+cd /var/www/html
+```
+* This is where Nginx serves web pages from
+* The default page index.nginx-debian.html lives here
+
+2. Create a new index.html file
+```bash
+sudo nano index.html
+```
+* This will open the Nano text editor
+* You will create your custom webpage
+
+3. Add basic HTML content
+* Paste following into Nano:
+```html
+<!DOCTYPE html>
+<html>
+<html>
+  <title>My Linux Web Server</title>
+</head>
+<body>
+  <h1>Hello from my linux Web Server!</h1>
+  <p>This is my first deployed webpage using Nginx.</p>
+</body>
+</html>
+```
+* h1 is the main heading
+* p is a paragraph
+* you can change the text if you want
+
+4. Save and exit Nano
+   * Press CTRL + 0 -> Enter --> Saves the file
+   * Press CTRL + X --> exits Nano
+
+5. Verify the Webpage in a browser
+
+* Open a web Browser
+* Navigate to:
+```
+http://<instance-public-ipv4>
+```
+* you should see your custom webpage with the heading and paragraph
+
+6. Restart Nginx (if necessary)
+```bash
+sudo systemctl restart nginx
+```
+* Usually optional, but ensures the new page is served
+
+**Notes** 
+- The default Nginx page will be replaced by your index.html.
+- This is a static HTML, no programming required.
+- Your webpage is served via port 80 - make sure firewall and AWS security group are still allowing HTTP traffic.
+
