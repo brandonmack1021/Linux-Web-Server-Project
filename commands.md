@@ -8,20 +8,27 @@ Document the creation of an AWS EC2 Ubuntu instance to use for the Linux Web Ser
 ## Steps to Launch EC2 Instance
 
 1. Go to AWS EC2 -> Launch instance
+
 2. Select **Ubuntu Server 24.04 LTS**
-3. Choose instance type: **t3.micro** (free tier)
-4. Create or select key pair
+ 
+5. Choose instance type: **t3.micro** (free tier)
+   
+6. Create or select key pair
    - Name: 'linux-web-server-project'
    - Key type: **RSA**
    - Private key file format: '.pem' (for Windows 10 and above)
    - Download the '.pem' file and keep it safe
-5. Configure instance settings:
+  
+7. Configure instance settings:
    - Default VPC/subnet
-   - Auto-assign public IP:Yes
-6. Configure Security Group:
+   - Auto-assign public IP: Yes
+  
+8. Configure Security Group:
    - Allow SSH (port 22) from anywhere (0.0.0.0/0)
-7. Add storage: 15Gib gp3
-8. Launch instance
+  
+9. Add storage: 15Gib gp3
+    
+11. Launch instance
 
 **Notes** 
 - This instance willl be used to practice Linux commands and deploy a web server.
@@ -81,32 +88,32 @@ Allow HTTP traffic to the EC2 instance and verify the Nginx web server is access
 
 ## Steps to Configure Firewall and Test Nginx
 
-1. **Check UFW (Uncomplicated Firewall) status**
+1. Check UFW (Uncomplicated Firewall) status
 ```bash
 sudo ufw status
 ```
 * By default, UFW may be inactive on Ubuntu
 * We will explicitly allow web traffic (port 80)
 
-2. **Allow SSH Traffic** (So you dont lock yourself out)
+2. Allow SSH Traffic (So you dont lock yourself out)
 ```bash
 sudo ufw allow ssh
 ```
 
-3. **Allow HTTP traffic** (port 80)
+3. Allow HTTP traffic (port 80)
 ```bash
 sudo ufw allow http
 ```
 * This allows inbound web traffic required for Nginx
   
-4. **Enable the UFW firewall**
+4. Enable the UFW firewall
 ```bash
 sudo ufw allow http
 ```
 * Press y when prompted to continue
 * This activates your firewall rules
   
-5.**Verify firewall rules** 
+5. Verify firewall rules 
 ```bash
 sudo ufw status
 ```
@@ -114,12 +121,12 @@ sudo ufw status
   *80/tcp ALLOW Anywhere
   *22/tcp ALLOW Anywhere
   
-6.**Verify AWS security group allows HTTP**
+6. Verify AWS security group allows HTTP
 * Go to AWS EC2 -> Security Groups
 * Edit inbound rules
 * Ensure HTTP (port 80) is allowed from 0.0.0.0/0
   
-7.**Test Nginx in a web browser**
+7. Test Nginx in a web browser
 * Copy your EC2 Public IPv4 address
 * Open a web browser
 * Navigate to:
